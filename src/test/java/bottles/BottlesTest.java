@@ -1,13 +1,22 @@
 package bottles;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class BottlesTest {
 
-    private final Bottles bottles = new Bottles();
+    private Bottles bottles;
+
+    @BeforeEach
+    void setUp() {
+        bottles = new Bottles();
+    }
 
     @Test
     void test_the_first_verse() {
