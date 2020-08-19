@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'com.github.ben-manes.versions' version '0.28.0'
+    id 'jacoco'
 }
 
 repositories {
@@ -8,16 +8,56 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.4.2'
-    testImplementation 'org.assertj:assertj-core:3.16.1'
+
+
+    testImplementation(platform("org.junit:junit-bom:5.6.2"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testImplementation("org.assertj:assertj-core:3.16.1")
+    testImplementation("com.approvaltests:approvaltests:9.2.0")
 }
 
-sourceCompatibility = '11'
-targetCompatibility = '11'
+tasks.withType(JavaCompile) {
+    options.compilerArgs.add("-Xlint:all")
+    options.incremental = true
+
+    if (jdkWithPreviewFeatures())
+        options.compilerArgs.add("--enable-preview")
+}
 
 test {
     useJUnitPlatform()
     testLogging {
         events "passed", "skipped", "failed"
     }
+    finalizedBy jacocoTestReport
+
+    if (jdkWithPreviewFeatures())
+        jvmArgs("--enable-preview")
+}
+
+jacoco {
+    toolVersion = "0.8.5"
+}
+
+jar {
+    manifest {
+        attributes(
+                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+                'Main-Class': 'kata.App'
+        )
+    }
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination file("${buildDir}/jacocoHtml")
+    }
+}
+
+static def jdkWithPreviewFeatures() {
+    def currentJvm = org.gradle.internal.jvm.Jvm.current()
+    def matcher = currentJvm =~ /^\d+/
+    return matcher[0].toInteger() > 11
 }
