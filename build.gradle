@@ -9,7 +9,6 @@ repositories {
 
 dependencies {
 
-
     testImplementation(platform("org.junit:junit-bom:5.6.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
     testImplementation("org.assertj:assertj-core:3.17.0")
@@ -37,15 +36,6 @@ test {
 
 jacoco {
     toolVersion = "0.8.5"
-}
-
-jar {
-    manifest {
-        attributes(
-                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
-                'Main-Class': 'kata.App'
-        )
-    }
 }
 
 jacocoTestReport {
