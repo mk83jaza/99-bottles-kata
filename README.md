@@ -1,3 +1,5 @@
+![Test Status](../../workflows/test/badge.svg)
+
 # Doing the exercise
 
 To run the test suite, command gradle to run the tests via
