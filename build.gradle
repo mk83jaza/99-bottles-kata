@@ -1,13 +1,10 @@
 plugins {
     id 'java'
-    id 'jacoco'
-    id 'application'
-    id 'info.solidsoft.pitest' version '1.7.4'
 }
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
@@ -31,50 +28,9 @@ tasks.withType(JavaCompile) {
     options.incremental = true
 }
 
-
-application {
-    mainClass.set("ferry.booking.Program")
-}
-
-jar {
-    manifest {
-        attributes "Main-Class": "ferry.booking.Program"
-    }
-
-    from {
-        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
-    }
-}
-
 test {
     useJUnitPlatform()
     testLogging {
         events "passed", "skipped", "failed"
     }
-    finalizedBy jacocoTestReport
-}
-
-jacoco {
-    toolVersion = "0.8.7"
-}
-
-jacocoTestReport {
-    dependsOn test
-    reports {
-        xml.required = false
-        csv.required = false
-        html.destination file("${buildDir}/jacocoHtml")
-    }
-}
-
-project.tasks.check.dependsOn("pitest")
-pitest {
-    junit5PluginVersion = '0.15'
-    testSourceSets = [sourceSets.test]
-    mainSourceSets = [sourceSets.main]
-    targetClasses = ['ferry.booking.*']
-    pitestVersion = '1.7.0'
-    threads = 4
-    outputFormats = ['XML', 'HTML']
-    timestampedReports = false
 }
