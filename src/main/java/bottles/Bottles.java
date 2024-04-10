@@ -2,11 +2,11 @@ package bottles;
 
 public class Bottles {
 
-  public String verse(int i) {
+  public String verse(int n) {
     throw new UnsupportedOperationException();
   }
 
-  public String verses(int i, int i1) {
+  public String verses(int upper, int lower) {
     throw new UnsupportedOperationException();
   }
 
