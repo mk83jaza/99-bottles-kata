@@ -1,6 +1,8 @@
 ![Test Status](../../workflows/test/badge.svg)
 
-# Doing the exercise
+# 99 bottles of OO kata
+
+## Doing the exercise
 
 To run the test suite, command gradle to run the tests via
 ```gradle test``` or ```./gradlew test```.
