@@ -3,6 +3,10 @@ package bottles;
 public class Bottles {
 
   public String verse(int amountOfBottles) {
+    if (amountOfBottles == 1) {
+      return "1 bottle of beer on the wall, 1 bottle of beer.\n" +
+          "Take it down and pass it around, no more bottles of beer on the wall.\n";
+    }
     int nextAmountOfBottles = amountOfBottles - 1;
     String result =
         amountOfBottles + " bottles of beer on the wall, " + amountOfBottles + " bottles of beer.\n"
