@@ -1,5 +1,7 @@
 package bottles;
 
+import java.util.List;
+
 public class Bottles {
 
   public String verse(int amountOfBottles) {
@@ -28,7 +30,13 @@ public class Bottles {
   }
 
   public String verses(int upper, int lower) {
-    String result = verse(upper) + "\n" + verse(lower);
+    String result = "";
+    for (int i = upper; i >= lower; i--) {
+      result += verse(i);
+      if (!(i == lower)) {
+        result += "\n";
+      }
+    }
     return result;
   }
 
