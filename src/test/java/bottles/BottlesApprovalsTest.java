@@ -30,7 +30,6 @@ class BottlesApprovalsTest {
     Approvals.verify(bottles.verse(3));
   }
 
-  @Disabled("solve previous test first")
   @Test
   void test_verse_2() {
     Approvals.verify(bottles.verse(2));

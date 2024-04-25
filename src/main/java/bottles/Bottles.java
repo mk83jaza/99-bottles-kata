@@ -3,8 +3,15 @@ package bottles;
 public class Bottles {
 
   public String verse(int amountOfBottles) {
-    return amountOfBottles + " bottles of beer on the wall, " + amountOfBottles + " bottles of beer.\n" +
-           "Take one down and pass it around, " + (amountOfBottles - 1) + " bottles of beer on the wall.\n";
+    String result =
+        amountOfBottles + " bottles of beer on the wall, " + amountOfBottles + " bottles of beer.\n"
+        +
+        "Take one down and pass it around, " + (amountOfBottles - 1);
+    String temp =
+        1 == amountOfBottles - 1 ? " bottle of beer on the wall.\n"
+            : " bottles of beer on the wall.\n";
+
+    return result + temp;
   }
 
   public String verses(int upper, int lower) {
