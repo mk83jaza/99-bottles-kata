@@ -28,7 +28,8 @@ public class Bottles {
   }
 
   public String verses(int upper, int lower) {
-    throw new UnsupportedOperationException();
+    String result = verse(upper) + "\n" + verse(lower);
+    return result;
   }
 
   public String song() {
