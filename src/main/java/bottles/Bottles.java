@@ -5,10 +5,9 @@ public class Bottles {
   public String verse(int amountOfBottles) {
     String result =
         amountOfBottles + " bottles of beer on the wall, " + amountOfBottles + " bottles of beer.\n"
-        +
-        "Take one down and pass it around, " + (amountOfBottles - 1);
+        + "Take one down and pass it around, " + (amountOfBottles - 1);
     String temp =
-        1 == amountOfBottles - 1 ? " bottle of beer on the wall.\n"
+        amountOfBottles - 1 == 1 ? " bottle of beer on the wall.\n"
             : " bottles of beer on the wall.\n";
 
     return result + temp;
