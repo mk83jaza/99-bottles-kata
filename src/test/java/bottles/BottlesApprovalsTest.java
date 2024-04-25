@@ -1,13 +1,16 @@
 package bottles;
 
+import com.github.larseckart.tcr.CommitOnGreenExtension;
 import org.approvaltests.Approvals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
+@ExtendWith(CommitOnGreenExtension.class)
 class BottlesApprovalsTest {
 
   private Bottles bottles;
@@ -17,7 +20,6 @@ class BottlesApprovalsTest {
     bottles = new Bottles();
   }
 
-  @Disabled("start here")
   @Test
   void test_the_first_verse() {
     Approvals.verify(bottles.verse(99));
