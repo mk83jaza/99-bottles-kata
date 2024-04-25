@@ -41,6 +41,6 @@ public class Bottles {
   }
 
   public String song() {
-    throw new UnsupportedOperationException();
+    return verses(99, 0);
   }
 }
