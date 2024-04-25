@@ -6,11 +6,13 @@ public class Bottles {
     String result =
         amountOfBottles + " bottles of beer on the wall, " + amountOfBottles + " bottles of beer.\n"
         + "Take one down and pass it around, " + (amountOfBottles - 1);
-    String temp =
-        amountOfBottles - 1 == 1 ? " bottle of beer on the wall.\n"
-            : " bottles of beer on the wall.\n";
+    if (amountOfBottles - 1 == 1) {
+      result += " bottle of beer on the wall.\n";
+    } else {
+      result += " bottles of beer on the wall.\n";
+    }
 
-    return result + temp;
+    return result;
   }
 
   public String verses(int upper, int lower) {
